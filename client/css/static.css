@@ -1,0 +1,48 @@
+.block404 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url(https://imgur.com/eHVyWTM.jpg);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.t404 {
+  position: absolute;
+  width: 364px;
+  height: 146px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(https://imgur.com/KPZo9YX.png);
+}
+
+.obj {
+  width: 204px;
+  height: 209px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: animation-404 6s infinite ease-in-out;
+}
+
+@keyframes animation-404 {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  50% {
+    transform: translate(-53%, -42%) rotate(-5deg);
+  }
+}
+
+.waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://imgur.com/eHVyWTM.jpg);
+  filter: url("#glitch");
+}

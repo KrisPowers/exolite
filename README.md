@@ -1,2 +1,2 @@
-# exolite
+# EXOLITE
 
