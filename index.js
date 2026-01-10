@@ -4,9 +4,13 @@ import { app } from './app.js';
 
 // Start the server
 
-(async () => {
-    await initializeServer().then (async () => {
-       await app();
-       return
-    })
-})()
+export async function listen() {
+
+    (async () => {
+        await initializeServer().then (async () => {
+        await app();
+        return
+        })
+    })()
+
+}
