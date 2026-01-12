@@ -12,6 +12,7 @@ export default async function initializeServer() {
             await db.set('config', {
                 port: 6500,
                 setupComplete: true,
+                lastLog: 0,
                 pages: {
                     404: {
                         title: 'Page Not Found',
@@ -28,6 +29,7 @@ export default async function initializeServer() {
         await db.set('config', {
             port: 6500,
             setupComplete: true,
+            lastLog: 0,
             pages: {
                 404: {
                     title: 'Page Not Found',

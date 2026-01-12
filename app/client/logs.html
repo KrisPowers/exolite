@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Logs</title>
+
+  <!-- Icons (Lucide via CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="./css/static.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo">Dashboard</span>
+      <button id="toggleSidebar" aria-label="Toggle sidebar">
+        <i data-lucide="chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="nav-item" data-page="configuration">
+        <i data-lucide="book"></i>
+        <span>Documentation</span>
+      </a>
+      <a href="#" class="nav-item" data-page="configuration">
+        <i data-lucide="settings"></i>
+        <span>Configuration</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="analytics">
+        <i data-lucide="bar-chart-3"></i>
+        <span>Analytics</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="pages">
+        <i data-lucide="layout"></i>
+        <span>Pages</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="workers">
+        <i data-lucide="users"></i>
+        <span>Workers</span>
+      </a>
+
+      <a href="#" class="nav-item active" data-page="logs">
+        <i data-lucide="file-text"></i>
+        <span>Request Logs</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <section class="request-logs-layout">
+
+      <!-- LEFT: LOG LIST -->
+      <aside class="log-list" id="logList">
+        <!-- Logs injected by JS -->
+      </aside>
+
+      <div class="log-detail" id="logDetail">
+        <p class="empty-state">Select a request to view details</p>
+      </div>
+
+    </section>
+    
+  </main>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/request-logs.js"></script>
+
+  <script src="./js/static.js"></script>
+  
+</body>
+</html>

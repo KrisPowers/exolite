@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+
+  <!-- Icons (Lucide via CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="./css/static.css" />
+</head>
+<body>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo">Dashboard</span>
+      <button id="toggleSidebar" aria-label="Toggle sidebar">
+        <i data-lucide="chevron-left"></i>
+      </button>
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="nav-item active" data-page="configuration">
+        <i data-lucide="book"></i>
+        <span>Documentation</span>
+      </a>
+      <a href="#" class="nav-item" data-page="configuration">
+        <i data-lucide="settings"></i>
+        <span>Configuration</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="analytics">
+        <i data-lucide="bar-chart-3"></i>
+        <span>Analytics</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="pages">
+        <i data-lucide="layout"></i>
+        <span>Pages</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="workers">
+        <i data-lucide="users"></i>
+        <span>Workers</span>
+      </a>
+
+      <a href="#" class="nav-item" data-page="logs">
+        <i data-lucide="file-text"></i>
+        <span>Request Logs</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="docs">
+
+    <div class="docs-layout">
+
+      <!-- LEFT: DOCS TOC -->
+      <aside class="docs-toc">
+        <nav>
+          <h4>Getting Started</h4>
+          <a href="#install">Installation</a>
+          <a href="#quickstart">Quick Start</a>
+
+          <h4>Core</h4>
+          <a href="#app">App</a>
+          <a href="#routing">Routing</a>
+          <a href="#middleware">Middleware</a>
+
+          <h4>Security</h4>
+          <a href="#security">Built-in Protections</a>
+
+          <h4>API</h4>
+          <a href="#api">Reference</a>
+        </nav>
+      </aside>
+
+      <!-- RIGHT: DOC CONTENT -->
+      <section class="docs-content">
+
+        <article id="install">
+          <h2>Installation</h2>
+          <pre><code>npm install expressmod</code></pre>
+        </article>
+
+        <article id="quickstart">
+          <h2>Quick Start</h2>
+          <pre><code>
+  import expressmod from "expressmod";
+
+  const app = expressmod();
+
+  app.get("/", (req, res) => {
+    res.send("Hello World");
+  });
+
+  app.listen(3000);
+          </code></pre>
+        </article>
+
+        <article id="app">
+          <h2>App</h2>
+          <p>
+            The app instance behaves like Express, but includes hardened defaults
+            and reduced configuration overhead.
+          </p>
+        </article>
+
+        <article id="routing">
+          <h2>Routing</h2>
+          <p>
+            Routing syntax mirrors Express for compatibility.
+          </p>
+        </article>
+
+        <article id="middleware">
+          <h2>Middleware</h2>
+          <p>
+            All middleware is automatically sandboxed and validated.
+          </p>
+        </article>
+
+        <article id="security">
+          <h2>Built-in Protections</h2>
+          <ul>
+            <li>Request fingerprinting</li>
+            <li>Rate-limit guardrails</li>
+            <li>Header hardening</li>
+            <li>Input sanitization</li>
+          </ul>
+        </article>
+
+        <article id="api">
+          <h2>API Reference</h2>
+          <p>
+            Full method documentation coming soon.
+          </p>
+        </article>
+
+      </section>
+    </div>
+  </main>
+
+
+  <script src="./js/static.js"></script>
+</body>
+</html>
