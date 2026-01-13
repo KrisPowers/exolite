@@ -269,6 +269,14 @@ main {
   color: #64748b;
 }
 
+.detail-card .false {
+  color: #111111;
+}
+
+.detail-card .true {
+  color: #e03030;
+}
+
 .alert {
   background: #fee2e2;
   padding: 10px;

@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <span class="status ${log.status >= 400 ? "error" : ""}">
             ${log.status}
           </span>
-          <span>${log.deviceType}</span>
+          <span>${log.ip}</span>
           <span>${log.time}</span>
         </div>
       `;
@@ -54,15 +54,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           ${log.status}
         </span>
       </div>
-
-      ${
-        log.flagged
-          ? `<div class="detail-card full">
-              <h4>Security Notes</h4>
-              <p class="alert">⚠ ${log.note}</p>
-            </div>`
-          : ""
-      }
 
       <div class="detail-card full">
               <h4>Agent</h4>
@@ -108,7 +99,25 @@ document.addEventListener("DOMContentLoaded", async () => {
             <li><span>Region</span><b>${log.region}</b></li>
           </ul>
         </div>
+
+        <div class="detail-card">
+          <h4>Security</h4>
+          <ul>
+            <li><span>Bot Traffic</span><b class="${log.bot}">${log.bot}</b></li>
+            <li><span>AI Crawler</span><b class="${log.aiCrailer}">${log.aiCrailer}</b></li>
+            <li><span>AI Assistant</span><b class="${log.aiAssistant}">${log.aiAssistant}</b></li>
+          </ul>
+        </div>
       </div>
+
+      ${
+        log.flagged
+          ? `<div class="detail-card full">
+              <h4>Security Notes</h4>
+              <p class="alert">⚠ ${log.note}</p>
+            </div>`
+          : ""
+      }
     `;
   }
 
