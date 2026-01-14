@@ -12,7 +12,6 @@ export default async function initializeServer() {
             await db.set('config', {
                 port: 6500,
                 setupComplete: true,
-                lastLog: 0,
                 pages: {
                     404: {
                         title: 'Page Not Found',
@@ -21,7 +20,15 @@ export default async function initializeServer() {
                 },
                 workers: {},
             }).then (async () => {
-                return
+                await db.set('analytics', {
+                    pageVisits: 0,
+                    allRequests: 0,
+                    hiddenRequests: 0,
+                    os: {},
+                    browser: {},
+                    path: {}
+                })
+                return;
             })
         }
 
@@ -29,7 +36,6 @@ export default async function initializeServer() {
         await db.set('config', {
             port: 6500,
             setupComplete: true,
-            lastLog: 0,
             pages: {
                 404: {
                     title: 'Page Not Found',
@@ -37,7 +43,15 @@ export default async function initializeServer() {
                 },
             }
         }).then (async () => {
-            return
+            await db.set('analytics', {
+                pageVisits: 0,
+                allRequests: 0,
+                hiddenRequests: 0,
+                os: {},
+                browser: {},
+                path: {}
+            })
+            return;
         })
     }
 }

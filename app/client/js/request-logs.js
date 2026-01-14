@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
               <p class="normal">${log.agent}</p>
       </div>
 
-      <div class="detail-grid">
         <div class="detail-card">
           <h4>Request</h4>
           <ul>
@@ -85,9 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <li><span>CPU Architecture</span><b>${log.cpu}</b></li>
           </ul>
         </div>
-      </div>
 
-      <div class="detail-grid">
         <div class="detail-card">
           <h4>Browser</h4>
           <ul>
@@ -108,7 +105,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             <li><span>AI Assistant</span><b class="${log.aiAssistant}">${log.aiAssistant}</b></li>
           </ul>
         </div>
-      </div>
 
       ${
         log.flagged
