@@ -27,8 +27,8 @@ function fillTable(el, data, suffix = "") {
   fillTable(document.getElementById("osTable"), os, "%");
   fillTable(document.getElementById("browserTable"), browsers, "%");
 
-  document.getElementById("kpiRequests").textContent = analyticData.allRequests;
-  document.getElementById("kpiVisits").textContent = analyticData.pageVisits;
-  document.getElementById("kpiHidden").textContent = analyticData.hiddenRequests
+  document.getElementById("kpiRequests").textContent = analyticData.requests.all;
+  document.getElementById("kpiVisits").textContent = analyticData.requests.visits;
+  document.getElementById("kpiHidden").textContent = analyticData.requests.hidden;
 
 })()

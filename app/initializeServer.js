@@ -21,9 +21,11 @@ export default async function initializeServer() {
                 workers: {},
             }).then (async () => {
                 await db.set('analytics', {
-                    pageVisits: 0,
-                    allRequests: 0,
-                    hiddenRequests: 0,
+                    requests: {
+                        all: 0,
+                        visits: 0,
+                        hidden: 0,
+                    },
                     os: {},
                     browser: {},
                     path: {}
@@ -44,9 +46,11 @@ export default async function initializeServer() {
             }
         }).then (async () => {
             await db.set('analytics', {
-                pageVisits: 0,
-                allRequests: 0,
-                hiddenRequests: 0,
+                requests: {
+                    all: 0,
+                    visits: 0,
+                    hidden: 0,
+                },
                 os: {},
                 browser: {},
                 path: {}

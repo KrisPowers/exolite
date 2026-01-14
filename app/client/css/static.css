@@ -34,9 +34,10 @@ main {
   left: 0;
   height: 100vh;
   width: 240px; /* must match your existing width */
-  background: #0f172a; /* or whatever you already use */
+  background: #ffffff; /* or whatever you already use */
+  border: 1px solid #e5e7eb;
+  color: #565657;
   z-index: 1000;
-  color: #e5e7eb;
   display: flex;
   flex-direction: column;
   transition: width 0.25s ease;
@@ -52,7 +53,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .logo {
@@ -75,35 +76,40 @@ main {
 .nav {
   display: flex;
   flex-direction: column;
-  padding: 8px 0 8px 8px;
+  padding: 8px 0 8px 0;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
-  color: #cbd5f5;
+  padding: 10px;
+  color: #5e5e5e;
   text-decoration: none;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
   transition: background 0.15s ease, color 0.15s ease;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px 8px 5px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
 }
 
 .nav-item:hover {
-  background: #1e293b;
-  color: #ffffff;
+  background: #f2f2f2;
+  color: #111;
 }
 
 .nav-item.active {
-  background: #2563eb;
-  color: #ffffff;
+  background: #f2f2f2;
+  color: #111;
 }
 
 .nav-item span {
   white-space: nowrap;
+}
+
+.nav-item svg {
+  width: 16px;
+  height: 16px;
 }
 
 .sidebar.collapsed .nav-item span {
@@ -120,7 +126,7 @@ main {
 .request-logs-layout {
   display: grid;
   grid-template-columns: 420px 1fr;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 125px);
   gap: 16px;
 }
 
@@ -230,8 +236,8 @@ main {
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #fee2e2;
-  color: #dc2626;
+  background: #eff6ff;
+  color: #2563eb;
   font-weight: 600;
 }
 
@@ -293,11 +299,11 @@ main {
 }
 
 .normal {
-  background: #d3d3d3;
+  background: #eff6ff;
+  border-left: 3px solid #2563eb;
   padding: 10px;
-  border-radius: 4px;
   font-size: 13px;
-  color: #000000;
+  color: #272727;
 }
 
 /* Docs page */
