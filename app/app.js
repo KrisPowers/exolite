@@ -45,77 +45,54 @@ export async function app() {
                     req.get("cf-ipcountry") ||
                     (req.ip === "::1" || req.ip === "127.0.0.1" ? "Localhost" : "UNKNOWN");
 
+                async function pushLog(flag, flagMessage) {
+                    const duration = Date.now() - start; // Calculate duration
+                    const logEntry = {
+                        id: newLog,
+                        method: req.method,
+                        path: req.path,
+                        status: res.statusCode,
+                        flagged: flag,
+                        note: flagMessage,
+                        ip: ip,
+                        agent: reqData.ua,
+                        deviceType: reqData.device.type || "Unknown",
+                        deviceModel: reqData.device.model || "Unknown",
+                        deviceVendor: reqData.device.vendor || "Unknown",
+                        os: osName,
+                        browserName: browserName,
+                        browserVersion: `${reqData.browser.version || "Unknown"}`,
+                        browserMajor: `${reqData.browser.major || "Unknown"}`,
+                        browserType: `${reqData.browser.type || "Unknown"}`,
+                        engineName: reqData.engine.name,
+                        engineVersion: reqData.engine.version,
+                        cpu: reqData.cpu.architecture,
+                        region: region,
+                        aiCrailer: isAICrawler(req.headers["user-agent"]),
+                        aiAssistant: isAIAssistant(req.headers["user-agent"]),
+                        bot: isBot(req.headers["user-agent"]),
+                        time: new Date().toLocaleString(),
+                        timing: {
+                            proccessing: `${duration}ms`,
+                        },
+                    };
+                    await db.push('logs', logEntry);
+                    return;
+                }
+
                 if(isAICrawler(req.headers["user-agent"]) || isAIAssistant(req.headers["user-agent"]) || isBot(req.headers["user-agent"])){
                     // Event listener for when the response finishes
                     res.on('finish', async () => {
-                        const duration = Date.now() - start; // Calculate duration
-                        const logEntry = {
-                            id: newLog,
-                            method: req.method,
-                            path: req.path,
-                            status: res.statusCode,
-                            flagged: true,
-                            note: 'Flagged for being marked either a Bot, AI Crawler, or AI Assistant. Please reveiew the log\'s security notes for further details.',
-                            ip: ip,
-                            agent: reqData.ua,
-                            deviceType: reqData.device.type || "Unknown",
-                            deviceModel: reqData.device.model || "Unknown",
-                            deviceVendor: reqData.device.vendor || "Unknown",
-                            os: osName,
-                            browserName: browserName,
-                            browserVersion: `${reqData.browser.version || "Unknown"}`,
-                            browserMajor: `${reqData.browser.major || "Unknown"}`,
-                            browserType: `${reqData.browser.type || "Unknown"}`,
-                            engineName: reqData.engine.name,
-                            engineVersion: reqData.engine.version,
-                            cpu: reqData.cpu.architecture,
-                            region: region,
-                            aiCrailer: isAICrawler(req.headers["user-agent"]),
-                            aiAssistant: isAIAssistant(req.headers["user-agent"]),
-                            bot: isBot(req.headers["user-agent"]),
-                            time: new Date().toLocaleString(),
-                            timing: {
-                                proccessing: `${duration}ms`,
-                            },
-                        };
-                        await db.push('logs', logEntry);
-                        return;
+                        await pushLog(true, 'Flagged for being marked either a Bot, AI Crawler, or AI Assistant. Please reveiew the log\'s security notes for further details.').then (async () => {
+                            return;
+                        })
                     });
                 } else {
                     // Event listener for when the response finishes
                     res.on('finish', async () => {
-                        const duration = Date.now() - start; // Calculate duration
-                        const logEntry = {
-                            id: newLog,
-                            method: req.method,
-                            path: req.path,
-                            status: res.statusCode,
-                            flagged: false,
-                            note: null,
-                            ip: ip,
-                            agent: reqData.ua,
-                            deviceType: reqData.device.type || "Unknown",
-                            deviceModel: reqData.device.model || "Unknown",
-                            deviceVendor: reqData.device.vendor || "Unknown",
-                            os: `${reqData.os.name || "Unknown"} ${reqData.os.version || ""}` .replace(/\s\d+(\.\d+)*/g, "") .trim(),
-                            browserName: `${reqData.browser.name || "Unknown"}`,
-                            browserVersion: `${reqData.browser.version || "Unknown"}`,
-                            browserMajor: `${reqData.browser.major || "Unknown"}`,
-                            browserType: `${reqData.browser.type || "Unknown"}`,
-                            engineName: reqData.engine.name,
-                            engineVersion: reqData.engine.version,
-                            cpu: reqData.cpu.architecture,
-                            region: region,
-                            aiCrailer: isAICrawler(req.headers["user-agent"]),
-                            aiAssistant: isAIAssistant(req.headers["user-agent"]),
-                            bot: isBot(req.headers["user-agent"]),
-                            time: new Date().toLocaleString(),
-                            timing: {
-                                proccessing: `${duration}ms`,
-                            },
-                        };
-                        await db.push('logs', logEntry);
-                        return;
+                        await pushLog(false, null).then (async () => {
+                            return;
+                        })
                     });
                 }
 
