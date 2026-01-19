@@ -1,6 +1,6 @@
 // Imports
-import initializeServer from '../app/initializeServer.js';
-import { app } from '../app/app.js';
+import initializeServer from './app/initializeServer.js';
+import { app } from './app/app.js';
 
 // Start the server
 (async () => {

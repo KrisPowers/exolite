@@ -1,3 +1,5 @@
-import { QuickDB } from "quick.db";
+import { SecureStore } from "apiro-db";
 
-export const db = new QuickDB();
+export const db = new SecureStore({
+  file: "./local.db",
+});

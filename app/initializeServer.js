@@ -2,6 +2,7 @@
 import { db } from './db.js';
 
 async function init() {
+    console.log(await db.get(''))
     await db.set('config', {
         port: 6500,
         setupComplete: true,
