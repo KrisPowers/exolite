@@ -118,7 +118,7 @@ export async function app() {
         app.set('trust proxy', true)
         app.use(cors())
         app.listen(config.port, () => {
-            console.log(`[APIRO] Your dashboard page will automatically open in your browser. To access your dashboard manually, please visit localhost:${config.port}/dashboard/overview`);
+            console.log(`\n\n\x1b[0mYour dashboard page will \x1b[32mautomatically\x1b[0m open in your browser.\n\x1b[30m\x1b[43mTo access your dashboard manually, please visit localhost:${config.port}/dashboard/overview\x1b[0m\n\n`);
             open(`http://localhost:${config.port}/dashboard/overview`);
         })
 
