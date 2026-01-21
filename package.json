@@ -1,6 +1,7 @@
 {
   "name": "apiro",
   "version": "1.0.0",
+  "description": "Apiro is an Express extention, providing a developer-friendly Admin UI, along with additional features & tools",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -17,9 +18,8 @@
       "url": "https://github.com/KrisPowers"
     }
   ],
-  "description": "",
   "dependencies": {
-    "apiro-db": "^1.0.7",
+    "apiro-db": "^1.2.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "open": "^11.0.0",
