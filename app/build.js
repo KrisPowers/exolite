@@ -3,7 +3,6 @@ import { db } from './db.js';
 import { app } from './app.js';
 
 /**
- * 
  * Pulls default config data from a URL, and imports it into the initialation process as needed.
  *
  * @private
@@ -77,6 +76,12 @@ class build {
         this.ready = this._init();
     }
 
+    /**
+     * Initializes the config, along with necessary pages & assets
+     * 
+     * @private
+     */
+
     async _init() {
         try {
             if(await db.get('config.setup_complete')){
@@ -90,6 +95,11 @@ class build {
             return;
         }
     }
+
+    /**
+     * @return {boolean} Delays Public API use until configuration
+     * @private
+     */
 
     async initialize() {
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -106,10 +116,13 @@ class build {
      */
 
     async start() {
+        const config = await defualtConfig();
         await this.initPromise;
         if(await db.get('config.setup_complete')){
-            await app();
-            return;
+            await db.set('dashboard', config.dashboard).then( async () => {
+                await app();
+                return;
+            })
         }
     }
 
